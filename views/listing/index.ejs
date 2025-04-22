@@ -1,0 +1,87 @@
+<% layout("../views/layouts/boilerplate") %>
+
+<style>
+    .filter{
+        margin-top: 1rem;
+        margin-right: 2rem;
+        text-align: center;
+        opacity: 0.6;
+        margin: auto;
+        text-decoration: none;
+        color: black;
+    }
+    #filters{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+    .filter p {
+        font-size: 0.8rem;
+    }
+    
+</style>
+    <div id="filters">
+        <a href="/listing/category/Trending" class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </a>
+        <a href="/listing/category/Rooms" class="filter">
+            <div><i class="fa-solid fa-house"></i></div>
+            <p>Rooms</p>
+        </a>
+        <a href="/listing/category/Iconic Cities" class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic Cities</p>
+        </a>
+        <a href="/listing/category/Mountains" class="filter">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Mountains</p>
+        </a>
+        <a href="/listing/category/Beach" class="filter">
+            <div><i class="fa-solid fa-umbrella-beach"></i></div>
+            <p>Beach</p>
+        </a>
+        <a href="/listing/category/Arctic" class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </a>
+        <a href="/listing/category/Amazing Pools" class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing Pools</p>
+        </a>
+        <a href="/listing/category/Camping" class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </a>
+        <a href="/listing/category/Farms" class="filter">
+            <div><i class="fa-solid fa-cow"></i></div>
+            <p>Farms</p>
+        </a>
+    </div>
+    
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+        <%for (let listing of allListings){%>
+            <a href="/listing/<%=listing._id%>" class="card-a">
+                <div class="card col listing-card" >
+                    <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                    <p class="card-text"><b><%= listing.title%></b> <br>
+                    &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %> / night
+                    </p>
+                    </div>
+                </div>
+            </a>
+              <%}%>
+    </div>
+   
+
+    <!-- <ul>
+        <%for (let listing of allListings){%>
+            <li><a href="/listing/<%=listing._id%>"><%= listing.title%></a></li>
+        <%}%>
+    </ul> -->
+

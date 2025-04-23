@@ -13,6 +13,9 @@ const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError.js");
 const passport = require('passport');
 const LocalStrategy = require("passport-local")
+const privacyRoutes = require('./routes/privacy');
+
+
 
 // Models
 const Listing = require("./models/listing.js");
@@ -76,7 +79,7 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
-app.use("/privacy", privacyRoutes);
+app.use('/', privacyRoutes);
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

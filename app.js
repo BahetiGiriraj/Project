@@ -38,7 +38,7 @@ async function main() {
     await mongoose.connect(dbURL);
 }
 
-
+app.use('/', privacyRoutes); 
 // View engine setup
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -79,7 +79,7 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
-app.use('/', privacyRoutes);
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

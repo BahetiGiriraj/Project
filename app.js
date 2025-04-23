@@ -23,6 +23,9 @@ const User = require("./models/user.js")
 const listingRoutes = require("./routes/listing");
 const reviewRoutes = require("./routes/review");
 const userRoutes = require("./routes/user");
+const privacyRoutes = require("./routes/privacy");
+
+
 
 
 
@@ -73,7 +76,7 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
-
+app.use("/privacy", privacyRoutes);
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
